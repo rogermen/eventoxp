@@ -67,11 +67,11 @@ FROM
 	<title>
 		<band height="25" splitType="Stretch">
 			<staticText>
-				<reportElement x="192" y="0" width="184" height="22" uuid="cbda568a-70a9-4ef3-ab62-af13a3c6fbbb"/>
+				<reportElement x="84" y="3" width="347" height="22" uuid="cbda568a-70a9-4ef3-ab62-af13a3c6fbbb"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
-				<text><![CDATA[REPORTE DE ESTUDIANTE]]></text>
+				<text><![CDATA[REPORTE DE GASTOS DE CONFERENCISTAS]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="457" y="0" width="100" height="20" uuid="ff9f3e93-cb85-4110-aa54-1baf35053db6"/>
