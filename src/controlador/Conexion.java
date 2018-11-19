@@ -48,12 +48,9 @@ public class Conexion
                     //la conexion ABRIR CONEXION!!!
                     con = DriverManager.getConnection(url, "postgres", "postgres");
 
-                    //checkForWarning es una funcion que recibe como parametro
-                    //el listado de los errores generados en la conexion
+                 
                     checkForWarning (con.getWarnings ());		
                     
-                    //Es un drvie que permite cargar las configuraciones del proveedor
-                    //de la BD en este caso las reglas de configuraciones de pOSTgRESS
                     DatabaseMetaData dma = con.getMetaData ();
 
                     System.out.println("\nConectado a: " + dma.getURL());
