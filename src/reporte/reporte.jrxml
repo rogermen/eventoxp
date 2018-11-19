@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f18a84ab-0f73-42fc-bfa7-d03ca23bdc31">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     conferencista."ci_confe" AS conferencista_ci_confe,
+     conferencista."nombre_confe" AS conferencista_nombre_confe,
+     conferencista."apellido_confe" AS conferencista_apellido_confe,
+     conferencista."celular_confe" AS conferencista_celular_confe,
+     conferencista."email_confe" AS conferencista_email_confe,
+     conferencista."profesion_confe" AS conferencista_profesion_confe,
+     gastoConferencista."id_gCon" AS gastoConferencista_id_gCon,
+     gastoConferencista."gasto_transporte" AS gastoConferencista_gasto_transporte,
+     gastoConferencista."gasto_estancia" AS gastoConferencista_gasto_estancia,
+     gastoConferencista."gasto_alimentaion" AS gastoConferencista_gasto_alimentaion,
+     gastoConferencista."gastos_otros" AS gastoConferencista_gastos_otros,
+     gastoConferencista."ci_confe" AS gastoConferencista_ci_confe,
+     gastoConferencista."subTotalConfe" AS gastoConferencista_subTotalConfe,
+     evento."id_evento" AS evento_id_evento,
+     evento."nombre_evento" AS evento_nombre_evento,
+     evento."descripcion_evento" AS evento_descripcion_evento,
+     evento."direccion_evento" AS evento_direccion_evento,
+     evento."fecha_evento" AS evento_fecha_evento,
+     gastoEvento."id_gEve" AS gastoEvento_id_gEve,
+     gastoEvento."gasto_autorio" AS gastoEvento_gasto_autorio,
+     gastoEvento."flete_data" AS gastoEvento_flete_data,
+     gastoEvento."gasto_sonido" AS gastoEvento_gasto_sonido,
+     gastoEvento."gasto_internet" AS gastoEvento_gasto_internet,
+     gastoEvento."gasto_varios" AS gastoEvento_gasto_varios,
+     gastoEvento."id_evento" AS gastoEvento_id_evento,
+     gastoEvento."subTotalEvento" AS gastoEvento_subTotalEvento
+FROM
+     "public"."conferencista" conferencista INNER JOIN "public"."gastoConferencista" gastoConferencista ON conferencista."ci_confe" = gastoConferencista."ci_confe",
+     "public"."evento" evento INNER JOIN "public"."gastoEvento" gastoEvento ON evento."id_evento" = gastoEvento."id_evento"]]>
+	</queryString>
+	<field name="conferencista_ci_confe" class="java.lang.Integer"/>
+	<field name="conferencista_nombre_confe" class="java.lang.String"/>
+	<field name="conferencista_apellido_confe" class="java.lang.String"/>
+	<field name="conferencista_celular_confe" class="java.lang.String"/>
+	<field name="conferencista_email_confe" class="java.lang.String"/>
+	<field name="conferencista_profesion_confe" class="java.lang.String"/>
+	<field name="gastoconferencista_id_gcon" class="java.lang.Integer"/>
+	<field name="gastoconferencista_gasto_transporte" class="java.lang.Integer"/>
+	<field name="gastoconferencista_gasto_estancia" class="java.lang.Integer"/>
+	<field name="gastoconferencista_gasto_alimentaion" class="java.lang.Integer"/>
+	<field name="gastoconferencista_gastos_otros" class="java.lang.Integer"/>
+	<field name="gastoconferencista_ci_confe" class="java.lang.Integer"/>
+	<field name="gastoconferencista_subtotalconfe" class="java.lang.Integer"/>
+	<field name="evento_id_evento" class="java.lang.Integer"/>
+	<field name="evento_nombre_evento" class="java.lang.String"/>
+	<field name="evento_descripcion_evento" class="java.lang.String"/>
+	<field name="evento_direccion_evento" class="java.lang.String"/>
+	<field name="evento_fecha_evento" class="java.sql.Date"/>
+	<field name="gastoevento_id_geve" class="java.lang.Integer"/>
+	<field name="gastoevento_gasto_autorio" class="java.lang.Integer"/>
+	<field name="gastoevento_flete_data" class="java.lang.Integer"/>
+	<field name="gastoevento_gasto_sonido" class="java.lang.Integer"/>
+	<field name="gastoevento_gasto_internet" class="java.lang.Integer"/>
+	<field name="gastoevento_gasto_varios" class="java.lang.Integer"/>
+	<field name="gastoevento_id_evento" class="java.lang.Integer"/>
+	<field name="gastoevento_subtotalevento" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="192" y="0" width="184" height="22" uuid="cbda568a-70a9-4ef3-ab62-af13a3c6fbbb"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE ESTUDIANTE]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="457" y="0" width="100" height="20" uuid="ff9f3e93-cb85-4110-aa54-1baf35053db6"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="39" height="20" uuid="976e7044-4cc3-497d-bc46-092ef11507a1"/>
+				<text><![CDATA[CI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="2" width="53" height="20" uuid="3d812659-13e8-432f-bbe1-01b191fd174d"/>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="2" width="54" height="20" uuid="29b562eb-cc48-4b8f-ba2d-416c949e29e9"/>
+				<text><![CDATA[APELLIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="192" y="2" width="76" height="20" uuid="1f07a483-50d3-4668-a13e-b93a0f531479"/>
+				<text><![CDATA[TRANSPORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="2" width="62" height="20" uuid="b43f2bc8-e16d-46c7-97a4-9bc2f81e8468"/>
+				<text><![CDATA[ESTANCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="2" width="84" height="20" uuid="ef88afda-ceea-4070-a5f7-02faa1e21c1f"/>
+				<text><![CDATA[ALIMENTACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="442" y="2" width="42" height="20" uuid="f6cf276e-2630-44a1-9659-1ee144bbc326"/>
+				<text><![CDATA[OTROS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="499" y="2" width="56" height="20" uuid="75e75255-9c7c-4dea-b0c7-9bfd684b0a07"/>
+				<text><![CDATA[SUBTOTAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="39" height="20" uuid="2cc982d3-0da6-44d6-8d32-745e695746d9"/>
+				<textFieldExpression><![CDATA[$F{conferencista_ci_confe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="54" y="0" width="53" height="20" uuid="f909d871-49eb-46a6-808a-826e9aa9920c"/>
+				<textFieldExpression><![CDATA[$F{conferencista_nombre_confe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="123" y="0" width="54" height="20" uuid="da1db7c6-a58d-42a5-bf7a-40a66905c9ba"/>
+				<textFieldExpression><![CDATA[$F{conferencista_apellido_confe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="0" width="76" height="20" uuid="de1a5a19-eb02-4835-a8cf-73198ca718dd"/>
+				<textFieldExpression><![CDATA[$F{gastoconferencista_gasto_transporte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="285" y="0" width="62" height="20" uuid="fb19a0ad-dd93-41fa-af67-33b6dadf6836"/>
+				<textFieldExpression><![CDATA[$F{gastoconferencista_gasto_estancia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="347" y="0" width="84" height="20" uuid="d7d6da4a-91c3-4ac1-9d24-5dec88c4bbbe"/>
+				<textFieldExpression><![CDATA[$F{gastoconferencista_gasto_alimentaion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="442" y="0" width="42" height="20" uuid="b6fd1c56-5a98-49be-801d-da94de987bac"/>
+				<textFieldExpression><![CDATA[$F{gastoconferencista_gastos_otros}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="499" y="0" width="56" height="20" uuid="cfdb37e4-7056-405c-924c-969819ef31b7"/>
+				<textFieldExpression><![CDATA[$F{gastoconferencista_subtotalconfe}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
