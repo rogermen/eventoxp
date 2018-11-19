@@ -5,15 +5,6 @@ import java.sql.*;
 import java.net.URL;   
 
 
-
-//Este archivo contiene la configuracion de la conexion por ODBC de la BD, donde se 
-//Cargan todos los drives necesarios y archivos que permiten realizar las operaciones
-//con las tablas de la BD
-
-//Paquete con las funcion que pemite configurar la conexion de la BD y tiene definido 
-//los controladores necesarios para las conexiones de la BD //Connection - ResultSet(consulta selet) - Statement(ejecutar consultas insert, update, delete) - SQException (Excepciones en SQL)
-
-
 public class Conexion 
 {
     //Objeto Tipo conexion que contiene todos los parametros para interactuar 
