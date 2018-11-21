@@ -35,6 +35,7 @@ public class vistaauspiciador extends javax.swing.JInternalFrame {
     txtdni.setText("");
     txtemail.setText("");
     txttel.setText("");
+    jnit.setText("");
    
     
     }
@@ -67,6 +68,8 @@ public class vistaauspiciador extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jnit = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnnuevo = new javax.swing.JButton();
         btnguardar = new javax.swing.JButton();
@@ -96,7 +99,7 @@ public class vistaauspiciador extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("REGISTRO DE ESTUDIANTE");
+        setTitle("REGISTRO DE AUSPICIADOR");
         setRequestFocusEnabled(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Detalle Estudiante"));
@@ -137,9 +140,11 @@ public class vistaauspiciador extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setText("CELULAR EN CARGADO");
+        jLabel6.setText("CELULAR ENCARGADO");
 
         jLabel7.setText("APORTE DEL AUSPICIADOR");
+
+        jLabel1.setText("NIT EMPRESA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,13 +152,15 @@ public class vistaauspiciador extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jnit)
                     .addComponent(txtemail, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                     .addComponent(txttel)
                     .addComponent(txtnom)
@@ -179,7 +186,11 @@ public class vistaauspiciador extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jnit, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -287,7 +298,7 @@ public class vistaauspiciador extends javax.swing.JInternalFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 47, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(78, 78, 78)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,12 +353,13 @@ private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         String auspiciador= txtdni.getText();
         String celular= txttel.getText();
         String aporte= txtemail.getText();
+        String nit = jnit.getText();
         conexionauspiciador estu=new conexionauspiciador();
         String []titulos={"AUSPICIADOR","ENCARGADO","CELULAR","APORTE"};
         String []res={auspiciador,nombre,celular,aporte};
         model= new DefaultTableModel(null,titulos);
         model.addRow(res);
-       if(estu.insertarauspiciador(auspiciador,nombre, celular, aporte)){
+       if(estu.insertarauspiciador(auspiciador,nombre, celular, aporte,nit)){
            tbclientes.setModel(model);
        } else{
            
@@ -400,6 +412,7 @@ private void mnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnnuevo;
     private javax.swing.JButton btnsalir;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -408,6 +421,7 @@ private void mnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jnit;
     private javax.swing.JMenuItem mneliminar;
     private javax.swing.JMenuItem mnmodificar;
     private javax.swing.JTable tbclientes;

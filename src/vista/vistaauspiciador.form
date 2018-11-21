@@ -32,7 +32,7 @@
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="maximizable" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="REGISTRO DE ESTUDIANTE"/>
+    <Property name="title" type="java.lang.String" value="REGISTRO DE AUSPICIADOR"/>
     <Property name="requestFocusEnabled" type="boolean" value="false"/>
   </Properties>
   <AccessibilityProperties>
@@ -82,7 +82,7 @@
                       <EmptySpace pref="63" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="1"/>
                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                   </Group>
@@ -107,16 +107,18 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jnit" max="32767" attributes="0"/>
                       <Component id="txtemail" pref="185" max="32767" attributes="1"/>
                       <Component id="txttel" alignment="0" max="32767" attributes="1"/>
                       <Component id="txtnom" alignment="0" max="32767" attributes="0"/>
@@ -149,7 +151,12 @@
                       <Component id="txtemail" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="80" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabel1" max="32767" attributes="0"/>
+                      <Component id="jnit" pref="24" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="19" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -185,7 +192,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="CELULAR EN CARGADO"/>
+            <Property name="text" type="java.lang.String" value="CELULAR ENCARGADO"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtemail">
@@ -193,6 +200,13 @@
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
             <Property name="text" type="java.lang.String" value="APORTE DEL AUSPICIADOR"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jnit">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="NIT EMPRESA"/>
           </Properties>
         </Component>
       </SubComponents>

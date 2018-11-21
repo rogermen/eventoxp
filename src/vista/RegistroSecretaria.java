@@ -110,6 +110,11 @@ public class RegistroSecretaria extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Nombres:");
 
+        txtnom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnomActionPerformed(evt);
+            }
+        });
         txtnom.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtnomKeyTyped(evt);
@@ -118,6 +123,11 @@ public class RegistroSecretaria extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Apellidos:");
 
+        txtape.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtapeActionPerformed(evt);
+            }
+        });
         txtape.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtapeKeyTyped(evt);
@@ -140,6 +150,11 @@ public class RegistroSecretaria extends javax.swing.JInternalFrame {
             }
         });
 
+        txttel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttelActionPerformed(evt);
+            }
+        });
         txttel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txttelKeyTyped(evt);
@@ -411,6 +426,18 @@ private void mnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtemailActionPerformed
+
+    private void txttelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttelActionPerformed
+
+    private void txtapeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtapeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtapeActionPerformed
+
+    private void txtnomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnomActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

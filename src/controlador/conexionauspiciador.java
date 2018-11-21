@@ -26,7 +26,7 @@ public class conexionauspiciador{
     }
     
    
-   public boolean insertarauspiciador(String nombre,String nombreEncargado ,String celularE, String aporte ) {
+   public boolean insertarauspiciador(String nombre,String nombreEncargado ,String celularE, String aporte ,String nit) {
         Connection coneccion=null;
         Statement sentencia=null;      
     String url="jdbc:postgresql://localhost:5432/evento";
@@ -40,8 +40,8 @@ public class conexionauspiciador{
                 int z = 0;
                 if(nombre!=null){
                     if(!EstudianteValido(nombre))   
-                   z=sentencia.executeUpdate("INSERT INTO auspiciadores(id_evento,nombre_auspiciador,nombre_encargado,celular_encargado, aporte_auspi) "
-                           + "                  VALUES("+1+",'"+nombre+"','"+nombreEncargado+"','"+celularE+"','"+aporte+"')");
+                   z=sentencia.executeUpdate("INSERT INTO auspiciadores(id_evento,nombre_auspiciador,nombre_encargado,celular_encargado, aporte_auspi,nit) "
+                           + "              VALUES("+1+",'"+nombre+"','"+nombreEncargado+"','"+celularE+"','"+aporte+"','"+nit+"');");
                 }
                 if(z==1){ respuesta=true;  }
             }
@@ -132,4 +132,78 @@ public class conexionauspiciador{
         }
         return z;
     }
+    
+
+    public int consultabd(String cunsulta) {
+        String SQL = cunsulta;
+ 
+        int z = 0;
+ 
+        try (Connection conn = connectados(); 
+                PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+            
+            z = pstmt.executeUpdate();
+           //ResultSet a = pstmt.executeQuery(SQL);
+           
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return z;
+    }
+    
+    
+    
+    public ResultSet consultadatos(String consulta){
+       
+      ResultSet respuesta = null;
+        Connection conectado = null;
+      Statement estado = null;    
+      try {
+         Class.forName("org.postgresql.Driver");
+         conectado = DriverManager.getConnection("jdbc:postgresql://localhost:5432/evento", "postgres", "postgres");
+         conectado.setAutoCommit(false);
+         estado = conectado.createStatement();
+         respuesta = estado.executeQuery( consulta);
+   
+      } catch ( Exception e ) {
+         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+         System.exit(0);
+      }
+        return respuesta;
+    }
+    
+    
+    
+    
+    
+    /*
+    public ResultSet consultadatos(String consulta) {
+ 
+        ResultSet res = null;
+       // int z = 0;
+       /*
+ResultSet respuesta = null;
+        Connection conectado = null;
+      Statement estado = null;
+       
+      try {
+         Class.forName("org.postgresql.Driver");
+         conectado = DriverManager.getConnection("jdbc:postgresql://localhost:5432/evento", "postgres", "postgres");
+         conectado.setAutoCommit(false);
+         estado = conectado.createStatement();
+         respuesta = estado.executeQuery( "select n
+       
+
+        try (Connection conn = connectados(); 
+                PreparedStatement pstmt = conn.prepareStatement(consulta)) {
+            pstmt =conect.createStatement(consulta);
+           res = pstmt.executeQuery(consulta);
+           
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return res;
+    }
+    */
+    
 }
