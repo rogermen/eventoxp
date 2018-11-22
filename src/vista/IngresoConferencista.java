@@ -116,6 +116,7 @@ public class IngresoConferencista extends javax.swing.JInternalFrame {
         btneliminar = new javax.swing.JButton();
         btnsalir = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        Editar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbconferencista = new javax.swing.JTable();
 
@@ -482,6 +483,13 @@ public class IngresoConferencista extends javax.swing.JInternalFrame {
             }
         });
 
+        Editar.setText("Editar");
+        Editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -492,9 +500,10 @@ public class IngresoConferencista extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btneliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnnuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnguardar, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                        .addComponent(btnguardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnsalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(Editar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -510,6 +519,8 @@ public class IngresoConferencista extends javax.swing.JInternalFrame {
                 .addComponent(btneliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnsalir)
+                .addGap(34, 34, 34)
+                .addComponent(Editar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -551,7 +562,7 @@ public class IngresoConferencista extends javax.swing.JInternalFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 4, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -824,8 +835,77 @@ if((car<'a' || car>'z') && (car<'A' || car>'Z') && (car!=(char)KeyEvent.VK_SPACE
         if((car<'0' || car>'9')) evt.consume();
     }//GEN-LAST:event_txtminiKeyTyped
 
+    private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
+        // TODO add your handling code here:
+        String nombre=txtnom.getText();
+        String apellido= txtape.getText();
+       
+        String celular= txtcelu.getText();
+        String email= txtemail.getText();
+        String profesion= txtprof.getText();
+         String ci= txtci.getText();
+         String tema= txtema.getText();
+         String hora= txhora.getText();
+         String resumen= txresumen.getText();
+                 {
+
+int confirmar = JOptionPane.showConfirmDialog(null, "¿Desea modificar los datos actuales?");
+
+if(confirmar == JOptionPane.YES_OPTION){
+
+    Connection conexion = null;
+    
+    try {
+    
+      //  conexion = metodospool.dataSource.getConnection();
+   
+        conexionConferencista confe=new conexionConferencista();
+        String actualizarsql = "UPDATE public.conferencista SET nombre_confe, apellido_confe, email_confe, celular_confe, profesion_confe"
+                    + "WHERE ci_confe";
+        
+     //   PreparedStatement prest = conexion.prepareStatement(Ssql);
+        
+    String []res={nombre,apellido,celular,email,profesion,ci,};
+     //model= new DefaultTableModel(null,actualizarsql);
+      //  model.addRow(res);
+     // if(confe.insertarConferencista(nombre, apellido, celular, email, profesion, ci, tema, hora, resumen)){
+     {
+             
+         //  tbconferencista.setModel(model);
+       
+           
+           //tbconferencista.setModel(model);
+       }
+    }
+      finally{
+    
+        if(conexion!=null){
+        
+            try {
+                
+                conexion.close();
+            
+            } catch (SQLException e) {
+            
+                JOptionPane.showMessageDialog(null, "Error al intentar cerrar la conexión."
+                                          + "Error: "+e, "Error en la operación", 
+                                          JOptionPane.ERROR_MESSAGE);
+                
+            }
+            
+        }
+           
+    }
+
+    
+
+}
+                 }
+    }//GEN-LAST:event_EditarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Editar;
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnnuevo;

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a3ada45f-34f3-4377-895e-2efcea4d9e5d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     sum("subTotalConfe") as totalconferencista,
+     sum("subTotalEvento") as totalevento, "nombre_evento"
+
+FROM
+     "public"."gastoConferencista" , public."evento",
+     "public"."gastoEvento" 
+
+group by "nombre_evento"
+]]>
+	</queryString>
+	<field name="totalconferencista" class="java.lang.Long"/>
+	<field name="totalevento" class="java.lang.Long"/>
+	<field name="nombre_evento" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="158" y="0" width="198" height="63" uuid="9a12c689-7d08-41ac-8be1-f63b570e2126"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[suma de gasto]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="356" y="2" width="199" height="20" uuid="e14539f0-c857-4d8e-8aa5-6fb7da69525f"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[GASTO CONFERENCISTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="195" y="2" width="136" height="20" uuid="b598fed8-60cf-4c80-87fc-0de3f91c7042"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[GASTO EVENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="2" width="166" height="20" uuid="f1ec5619-2bd0-4b15-ad65-d42a5f218e24"/>
+				<text><![CDATA[NOMBRE EVENTO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="48" splitType="Stretch">
+			<textField>
+				<reportElement x="356" y="8" width="138" height="20" uuid="55b8a3ae-ada3-4f73-b418-cce3a90f2e6c"/>
+				<textFieldExpression><![CDATA[$F{totalconferencista}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="8" width="100" height="20" uuid="82c85fa6-69a9-4e59-9c6b-ba383b6b71ba"/>
+				<textFieldExpression><![CDATA[$F{totalevento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="13" y="8" width="166" height="20" uuid="bdf8502e-8c3e-4103-8592-4fdeebe80ec7"/>
+				<textFieldExpression><![CDATA[$F{nombre_evento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="9" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -53,8 +53,6 @@ public class inicio extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(20, 20));
-        setSize(new java.awt.Dimension(1200, 700));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("CONFERENCIA DE SIS2");
@@ -129,6 +127,11 @@ public class inicio extends javax.swing.JFrame {
         jMenu2.add(jMenuItem9);
 
         jMenuItem8.setText("COSTO EVENTO");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem8);
 
         jMenuBar1.add(jMenu2);
@@ -350,6 +353,44 @@ public class inicio extends javax.swing.JFrame {
         confe.show();
         
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+           Connection coneccion=null;
+
+    String url="jdbc:postgresql://localhost:5432/evento1";
+    String password="ventura";
+    try {
+            Class.forName("org.postgresql.Driver");
+            coneccion=DriverManager.getConnection(url,"postgres", password);
+         /*
+            Conexion con = new Conexion("no");
+            com.mysql.jdbc.Connection conn = con.getConexion();
+            */
+            JasperReport reporte = null;
+            String path = "src\\reporte\\suma.jasper";
+            
+            Map parametro = new HashMap();
+            parametro.put("id_estado", 36);
+            
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, null, coneccion);
+            
+            JasperViewer view = new JasperViewer(jprint, false);
+            
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            
+            view.setVisible(true);
+            
+        } catch (JRException ex) {
+           // Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

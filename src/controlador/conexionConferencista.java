@@ -123,7 +123,7 @@ public class conexionConferencista{
       Statement estado = null;    
       try {
          Class.forName("org.postgresql.Driver");
-         conectado = DriverManager.getConnection("jdbc:postgresql://localhost:5432/evento", "postgres", "postgres");
+         conectado = DriverManager.getConnection("jdbc:postgresql://localhost:5432/evento1", "postgres", "ventura");
          conectado.setAutoCommit(false);
          estado = conectado.createStatement();
          respuesta = estado.executeQuery( "select ci_estu,nombre_estu, apellido_estu, celu_estu,inscripcione\n" +

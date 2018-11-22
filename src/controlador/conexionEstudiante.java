@@ -29,8 +29,8 @@ public class conexionEstudiante{
    public boolean insertarEstudiante(String nombre,String apellidos,String ci ,String celular, String email ) {
         Connection coneccion=null;
         Statement sentencia=null;      
-    String url="jdbc:postgresql://localhost:5432/evento";
-    String password="postgres";
+    String url="jdbc:postgresql://localhost:5432/evento1";
+    String password="ventura";
     boolean respuesta =false;
     try {
             Class.forName("org.postgresql.Driver");
@@ -58,7 +58,7 @@ public class conexionEstudiante{
       Statement stmt = null;    
       try {
          Class.forName("org.postgresql.Driver");
-         conected = DriverManager.getConnection("jdbc:postgresql://localhost:5432/evento", "postgres", "postgres");
+         conected = DriverManager.getConnection("jdbc:postgresql://localhost:5432/evento", "postgres", "ventura");
          conected.setAutoCommit(false);
          stmt = conected.createStatement();
          ResultSet respBD = stmt.executeQuery( "SELECT nombre_estu FROM public.estudiante WHERE nombre_estu='"+nombre+"' ;" );
@@ -97,7 +97,7 @@ public class conexionEstudiante{
       Statement estado = null;    
       try {
          Class.forName("org.postgresql.Driver");
-         conectado = DriverManager.getConnection("jdbc:postgresql://localhost:5432/evento", "postgres", "postgres");
+         conectado = DriverManager.getConnection("jdbc:postgresql://localhost:5432/evento", "postgres", "ventura");
          conectado.setAutoCommit(false);
          estado = conectado.createStatement();
          respuesta = estado.executeQuery( "select nombre_estu, apellido_estu, celu_estu,ci_estu\n" +
@@ -112,7 +112,7 @@ public class conexionEstudiante{
     }
    
    public Connection connectados() throws SQLException {
-        return DriverManager.getConnection("jdbc:postgresql://localhost/evento", "postgres", "postgres");
+        return DriverManager.getConnection("jdbc:postgresql://localhost/evento1", "postgres", "ventura");
     }
    
    
