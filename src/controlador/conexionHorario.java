@@ -21,6 +21,13 @@ public class conexionHorario{
    public ResultSet cronograma(){
        
       ResultSet respBD = null;
+      Conexion conectado = new Conexion();
+      String consulta= "select hora, nombre_confe,apellido_confe,tema\n" +
+                                        "from conferencia,conferencista\n" +
+                                    "where conferencista.ci_confe=conferencia.ci_confe;" ;
+      respBD = conectado.consultaBDatos(consulta);
+      
+      /*
         Connection conected = null;
       Statement stmt = null;    
       try {
@@ -36,6 +43,10 @@ public class conexionHorario{
          System.err.println( e.getClass().getName()+": "+ e.getMessage() );
          System.exit(0);
       }
+      */
+      
+      
+      
         return respBD;
     }
    

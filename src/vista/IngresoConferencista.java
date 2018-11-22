@@ -576,9 +576,9 @@ private void mneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
 private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
 // TODO add your handling code here:
-   String nombre=txtnom.getText();
-        String apellido= txtape.getText();
-       
+  
+        String nombre=txtnom.getText();  
+        String apellido= txtape.getText();      
         String celular= txtcelu.getText();
         String email= txtemail.getText();
         String profesion= txtprof.getText();
@@ -586,12 +586,19 @@ private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
          String tema= txtema.getText();
          String hora= txhora.getText();
          String resumen= txresumen.getText();
+         
+         String transporte = jtransporte.getText();
+         String estancia = jestancia.getText();
+         String alimentacion = jalimentacion.getText();
+         String varios = jvarios.getText();
+         String subtotal = jsubtotal.getText();
+         
         conexionConferencista confe=new conexionConferencista();
         String []titulos={"Nombres","Apellidos","Celular","Email","Profesion","ci","Tema","Hora","Resumen"};
         String []res={nombre,apellido,celular,email,profesion,ci,tema,hora,resumen};
         model= new DefaultTableModel(null,titulos);
         model.addRow(res);
-       if(confe.insertarConferencista(nombre, apellido, celular, email, profesion, ci, tema, hora, resumen)){
+       if(confe.insertarConferencista(nombre, apellido, celular, email, profesion, ci, tema, hora, resumen, transporte,estancia,alimentacion, varios,subtotal)){
            tbconferencista.setModel(model);
        } else{
            

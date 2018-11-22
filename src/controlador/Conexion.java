@@ -1,19 +1,14 @@
 package controlador;
 import java.sql.*; 
-
-//paquete que permite configurar las funciones de red
-import java.net.URL;   
-
-
 public class Conexion 
 {
     //Objeto Tipo conexion que contiene todos los parametros para interactuar 
-    //con la BD se crea un objeto tipo con
-    public Connection con;
+    //con la BD se crea un objeto tipo conetado
+    public Connection conetado;
 
     //Constructor de la clase Conexion que contiene el parametro nombre que determina
-    //el nombre de la base de datos que se va ha conectar con el ODBC
-    public Conexion(String nombre)
+    //el nombre de la base de datos que se va ha conectar conetado el ODBC
+    public Conexion()
     {
           try
             {
@@ -37,23 +32,16 @@ public class Conexion
                     //posee seguridad y por ultimo la clave
                     //DriverManager.getConnection es el servicio que permite establecer
                     //la conexion ABRIR CONEXION!!!
-                    con = DriverManager.getConnection(url, "postgres", "postgres");
+                    conetado = DriverManager.getConnection(url, "postgres", "postgres");
 
                     //checkForWarning es una funcion que recibe como parametro
                     //el listado de los errores generados en la conexion
-                    checkForWarning (con.getWarnings ());		
+                    checkForWarning (conetado.getWarnings ());		
                     
                     //Es un drvie que permite cargar las configuraciones del proveedor
                     //de la BD en este caso las reglas de configuraciones de pOSTgRESS
-                    DatabaseMetaData dma = con.getMetaData ();
+                    DatabaseMetaData dma = conetado.getMetaData ();
 
-                    System.out.println("\nConectado a: " + dma.getURL());
-                    //System.out.println("Rurta de la base de datos: "+con."");
-                    System.out.println("Driver       " + 
-                            dma.getDriverName());
-                    System.out.println("Version      " +
-                            dma.getDriverVersion());
-                    System.out.println("");
 
             }
             catch (SQLException ex) 
@@ -96,17 +84,12 @@ public class Conexion
         }
         return rc;
     }
-
-    public Conexion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public void cerrarConexion()
     {
         try
         {
             //Cierra la conexion de la Base de Datos
-            con.close();
+            conetado.close();
             System.out.println("Cerrada la conexion con la Base de Datos");
         }
         catch(SQLException e)
@@ -114,8 +97,62 @@ public class Conexion
             System.out.println("Error al cerrar la conexion con la Base de datos. \n"+e);
         }
     }
-
-    public com.mysql.jdbc.Connection getConexion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Connection connectadoDatos() throws SQLException {
+        return DriverManager.getConnection("jdbc:postgresql://localhost/evento", "postgres", "postgres");
     }
+   
+   
+   
+    public boolean instertarDato(String consulta) {
+
+ 
+        int z = 0;
+ 
+        try (Connection conn = connectadoDatos(); 
+                PreparedStatement pstmt = conn.prepareStatement(consulta)) {
+
+            z = pstmt.executeUpdate();
+ 
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return z==1;
+    }
+    public boolean eliminarBDatos(String consulta) {
+        int z = 0;
+ 
+        try (Connection conn = connectadoDatos(); 
+                PreparedStatement pstmt = conn.prepareStatement(consulta)) {
+
+            z = pstmt.executeUpdate();
+ 
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return z==1;
+    }
+    
+    
+    
+    
+     public ResultSet consultaBDatos(String consulta){ 
+      ResultSet respuesta = null;
+        Connection conectado = null;
+      Statement estado = null;    
+      try {
+         Class.forName("org.postgresql.Driver");
+         conectado = DriverManager.getConnection("jdbc:postgresql://localhost:5432/evento", "postgres", "postgres");
+         conectado.setAutoCommit(false);
+         estado = conectado.createStatement();
+         respuesta = estado.executeQuery( consulta );
+   
+      } catch ( Exception e ) {
+         System.err.println( e.getClass().getName()+": "+ e.getMessage() );
+         System.exit(0);
+      }
+        return respuesta;
+    }
+    
+    
+    
 }
