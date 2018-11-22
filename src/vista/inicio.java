@@ -259,8 +259,8 @@ public class inicio extends javax.swing.JFrame {
         
         Connection coneccion=null;
 
-    String url="jdbc:postgresql://localhost:5432/evento";
-    String password="postgres";
+    String url="jdbc:postgresql://localhost:5432/evento1";
+    String password="ventura";
     try {
             Class.forName("org.postgresql.Driver");
             coneccion=DriverManager.getConnection(url,"postgres", password);
@@ -305,8 +305,9 @@ public class inicio extends javax.swing.JFrame {
         
         Connection coneccion=null;
 
-    String url="jdbc:postgresql://localhost:5432/evento";
-    String password="postgres";
+    String url="jdbc:postgresql://localhost:5432/evento1";
+    String password="ventura"
+            + "";
     try {
             Class.forName("org.postgresql.Driver");
             coneccion=DriverManager.getConnection(url,"postgres", password);

@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -160,7 +162,7 @@ public class conexionauspiciador{
       Statement estado = null;    
       try {
          Class.forName("org.postgresql.Driver");
-         conectado = DriverManager.getConnection("jdbc:postgresql://localhost:5432/evento", "postgres", "postgres");
+         conectado = DriverManager.getConnection("jdbc:postgresql://localhost:5432/evento", "postgres", "ventura");
          conectado.setAutoCommit(false);
          estado = conectado.createStatement();
          respuesta = estado.executeQuery( consulta);
@@ -175,35 +177,31 @@ public class conexionauspiciador{
     
     
     
-    
-    /*
-    public ResultSet consultadatos(String consulta) {
- 
-        ResultSet res = null;
-       // int z = 0;
-       /*
-ResultSet respuesta = null;
-        Connection conectado = null;
-      Statement estado = null;
-       
-      try {
-         Class.forName("org.postgresql.Driver");
-         conectado = DriverManager.getConnection("jdbc:postgresql://localhost:5432/evento", "postgres", "postgres");
-         conectado.setAutoCommit(false);
-         estado = conectado.createStatement();
-         respuesta = estado.executeQuery( "select n
-       
-
-        try (Connection conn = connectados(); 
-                PreparedStatement pstmt = conn.prepareStatement(consulta)) {
-            pstmt =conect.createStatement(consulta);
-           res = pstmt.executeQuery(consulta);
-           
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+public String[] consultaUpdate(String ci){
+     String[] respue1 =  new String [4];
+    try {
+    String[] respue =  new String [4];
+    ResultSet res = null;
+   Conexion conectado =new Conexion();
+   String consulta = " select nombre_auspiciador,nombre_encargado, celular_encargado, aporte_auspi from auspiciadores where nit ='"+ci+"';" ;
+   res = conectado.consultaBDatos(consulta);
+   
+     
+            while(res.next()){
+                respue[0]= res.getString("nombre_auspiciador");
+                respue[1]= res.getString("nombre_encargado");
+                respue[2]= res.getString("celular_encargado");
+                respue[3]= res.getString("aporte_auspi");
+                
+            }  
+            
+         respue1=respue;   
+            
+} catch (SQLException ex) {
+            Logger.getLogger(conexionauspiciador.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return res;
-    }
-    */
+    
+    return respue1;
+}
     
 }
