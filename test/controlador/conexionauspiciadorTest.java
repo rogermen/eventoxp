@@ -55,6 +55,9 @@ public class conexionauspiciadorTest {
         conexionauspiciador instance = new conexionauspiciador();
         boolean result = instance.insertarauspiciador(nombre, nombreEncargado, celularE, aporte,nit);
        
+        
+        
+        
         String s = "select nombre_encargado, celular_encargado,nit \n" +
                                         "from auspiciadores\n" +
                                     "where nit='"+nit+"';" ;

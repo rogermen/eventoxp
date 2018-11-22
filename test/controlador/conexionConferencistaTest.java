@@ -7,6 +7,7 @@ package controlador;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -47,7 +48,7 @@ public class conexionConferencistaTest {
         String celular = "12345678";
         String email = "mr@gmail.com";
         String profesion = "Informatica";
-        String ci = "2222222";
+        String ci = "3333334";
         String tema = "redes";
         String hora = "10:00";
         String documento = "data center ";
@@ -57,10 +58,25 @@ public class conexionConferencistaTest {
         String varios = "100";
         String subtotal = "400";
         conexionConferencista instance = new conexionConferencista();
-        boolean expResult = true;
+        String ciresultado = "";
         boolean result = instance.insertarConferencista(nombre, apellidos, celular, email, profesion, ci, tema, hora, documento, transporte, estancia, alimentacion, varios, subtotal);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
+        
+        String auxi = "select ci_confe, nombre_confe,apellido_confe \n" +
+                                        "from conferencista\n" +
+                                    "where ci_confe='"+ci+"';" ;
+        Conexion conectado = new Conexion();
+         try {
+         ResultSet res = conectado.consultaBDatos(auxi);    
+         while (res.next()){
+           ciresultado = res.getString("ci_confe");
+         }   
+        } catch (SQLException a){
+            
+        }
+        
+        
+        assertEquals(ci, ciresultado);
+        
     }
 
 
